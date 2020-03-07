@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using HtmlAgilityPack;
 using System.Threading.Tasks;
+using lab1.models;
 
 namespace lab1
 {
@@ -13,17 +14,20 @@ namespace lab1
         private static WebCrawler instance;
         private static object syncRoot = new Object();
         public IElemRetriever Retriever { get; set; }
-        private WebCrawler(string path)
+
+        private WebCrawler()
         {
-            this.Path = path;
+            
             web = new HtmlWeb();
         }
 
-        public async Task<HtmlDocument> Download()
+        public async Task<HtmlDocument> Download(string path)
         {
+            this.Path = path;
             try
             {
-                return await web.LoadFromWebAsync(Path);
+                var doc = await web.LoadFromWebAsync(Path);
+                return doc;
             }
             catch (Exception e)
             {
@@ -32,6 +36,16 @@ namespace lab1
             }
 
             return null;
+        }
+
+        public async Task<MyHtmlModel> GetMyHtmlModel(string path)
+        {
+            HtmlDocument html = await Download(path);
+            return new MyHtmlModel()
+            {
+                HTML = html.Text,
+                Name = path
+            };
 
         }
 
@@ -43,12 +57,9 @@ namespace lab1
                 Console.WriteLine(VARIABLE);
             }
         }
-        private WebCrawler()
-        {
-            web = new HtmlWeb();
-        }
 
-        public static WebCrawler GetInstance(string path)
+
+        public static WebCrawler GetInstance()
         {
             Console.WriteLine($"GetInstance {DateTime.Now.TimeOfDay}");
             if (instance == null)
@@ -56,7 +67,7 @@ namespace lab1
                 lock (syncRoot)
                 {
                     if (instance == null)
-                        instance = new WebCrawler(path);
+                        instance = new WebCrawler();
                 }
             }
             return instance;
