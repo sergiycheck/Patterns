@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
 
-
-namespace lab1
+namespace Patterns
 {
     public interface IElemRetriever
     {

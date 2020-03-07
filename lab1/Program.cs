@@ -1,11 +1,9 @@
-﻿using HtmlAgilityPack;
-using lab1.models;
-using System;
-using System.Collections.Generic;
+﻿using System;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using lab1.repository;
+using Patterns.ChainOfResponsibility;
 
-namespace lab1
+namespace Patterns
 {
     class Program
     {
@@ -20,11 +18,21 @@ namespace lab1
         {
             //singleton
             //string path = @"https://getbootstrap.com/docs/4.4/examples/album/";
-            string path = @"https://codebeautify.org/all-number-converter";
+            //string path = @"https://codebeautify.org/all-number-converter";
+            //string pathfile = @"E:/filesFromCDisk/templates/startbootstrap-grayscale-gh-pages/index.html#";
 
-            HtmlStoreProxy proxyOb = new HtmlStoreProxy();
-            var model = await proxyOb.GetMyHtmlModel(path);
-            Console.WriteLine(model.HTML);
+            //proxy
+            //HtmlStoreProxy proxyOb = new HtmlStoreProxy();
+            //var model = await proxyOb.GetMyHtmlModel(path);
+            //Console.WriteLine(model.HTML);
+
+
+            //chain of responsibility
+            var fileLoad = new FromFileLoader();
+            var webload = new FromWebLoader();
+            fileLoad.SetNext(webload);
+            Console.WriteLine("Chain: File->Web");
+            Client.ClientLoader(fileLoad);
 
 
 

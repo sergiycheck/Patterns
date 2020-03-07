@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using System.Threading.Tasks;
-using lab1.models;
 using Microsoft.EntityFrameworkCore;
+using Patterns.models;
 
-namespace lab1.repository
+namespace Patterns.repository
 {
     public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
     {

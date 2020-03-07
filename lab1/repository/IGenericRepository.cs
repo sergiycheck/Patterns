@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using System.Threading.Tasks;
 
-namespace lab1.repository
+namespace Patterns.repository
 {
     public interface IGenericRepository<TEntity> where TEntity:class
     {

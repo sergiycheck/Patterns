@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using lab1.models;
-using lab1.repository;
+﻿using System.Threading.Tasks;
+using Patterns.models;
+using Patterns.repository;
 
-namespace lab1
+namespace Patterns
 {
     public class HtmlStoreProxy
     {

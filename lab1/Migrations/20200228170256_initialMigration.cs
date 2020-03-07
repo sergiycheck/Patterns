@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace lab1.Migrations
+namespace Patterns.Migrations
 {
     public partial class initialMigration : Migration
     {

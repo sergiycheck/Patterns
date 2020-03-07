@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using HtmlAgilityPack;
 using System.Threading.Tasks;
-using lab1.models;
+using HtmlAgilityPack;
+using Patterns.models;
 
-namespace lab1
+namespace Patterns
 {
     public class WebCrawler
     {

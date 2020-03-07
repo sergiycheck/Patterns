@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using HtmlAgilityPack;
-
-namespace lab1.models
+﻿namespace Patterns.models
 {
     public class MyHtmlModel
     {

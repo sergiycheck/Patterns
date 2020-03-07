@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using lab1.models;
+﻿using System.Linq;
+using Patterns.models;
 
-namespace lab1.repository
+namespace Patterns.repository
 {
     public class MyHtmlModelRepository<TEntity>:GenericRepository<TEntity> where TEntity:MyHtmlModel
     {
