@@ -26,7 +26,48 @@ namespace Patterns
             try
             {
                 var doc = await web.LoadFromWebAsync(Path);
-                return doc;
+                if (doc != null)
+                {
+                    return doc;
+                }
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+
+            }
+
+            try
+            {
+                var docf = new HtmlDocument();
+                docf.Load(path);
+                if(docf!=null)
+                    return docf;
+                return null;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+
+            }
+
+
+            return null;
+        }
+
+        public MyHtmlModel LoadFromFile(string path)
+        {
+            try
+            {
+                var docf = new HtmlDocument();
+                docf.Load(path);
+                if (docf != null)
+                    return new MyHtmlModel()
+                    {
+                        HTML = docf.Text,
+                        Name = path
+                    };
             }
             catch (Exception e)
             {

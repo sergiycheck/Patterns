@@ -12,6 +12,5 @@
         public virtual object Handle(string path)
             => _nextLoader != null ? _nextLoader.Handle(path) : null;
 
-
     }
 }
