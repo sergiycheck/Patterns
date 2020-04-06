@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Patterns.ChainOfResponsibility;
 using Patterns.Memento;
 using Patterns.models;
+using Patterns.TemplateMethod;
 
 namespace Patterns
 {
@@ -34,7 +35,7 @@ namespace Patterns
             Client.ClientLoader(fileLoad);
         }
 
-        static async Task Strategy(string path)
+        static void Strategy(string path)
         {
             //crawler.Retriever = new LinkRetriever();
             //var elems1 = await crawler.Retriever.GetElems(crawler.Path, html);
@@ -46,9 +47,9 @@ namespace Patterns
             //crawler.Print(elems2);
         }
 
-        static async Task Memento(string path)
+        static void Memento(string path)
         {
-            CareTaker careTaker = CareTaker.RestoreFromFile().Result;
+            CareTaker careTaker = CareTaker.RestoreFromFile();
             Originator originator = null;
             WebCrawler webcrawler = WebCrawler.GetInstance();
             if (careTaker != null)
@@ -73,17 +74,28 @@ namespace Patterns
             //Console.WriteLine("History");
             //careTaker.ShowHistory();
 
+        }
 
+        static void TemplateMethod(string path)
+        {
+            HtmlDataAccess data = new HtmlButtonAccess(path,"buttons");
+            data.Process();
+            data = new HtmlLinkAccess(path, "links");
+            data.Process("json");
         }
         static async Task MainAsync(string[] args)
         {
             //singleton
             //string path = @"https://getbootstrap.com/docs/4.4/examples/album/";
             //string path = @"https://codebeautify.org/all-number-converter";
-            string path = @"E:/filesFromCDisk/templates/startbootstrap-grayscale-gh-pages/index.html";
-            
+            //string path = @"E:/filesFromCDisk/templates/startbootstrap-grayscale-gh-pages/index.html";
+            string path = @"E:\filesFromCDisk\templates\microsoft\Microsoft Docs.html";
+
+            //TemplateMethod
+            TemplateMethod(path);
+
             //memento
-            await Memento(path);
+             //Memento(path);
 
             //proxy
             //await Proxy(path);
@@ -92,7 +104,7 @@ namespace Patterns
             //ChainOfResponsibility();
 
             //strategy
-            //await Strategy(path);
+            //Strategy(path);
 
 
         }

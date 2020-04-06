@@ -8,13 +8,11 @@ namespace Patterns
 {
     class LinkRetriever : IElemRetriever
     {
-        public async Task<IEnumerable<string>> GetElems(string path, HtmlDocument html)
+        public IEnumerable<string> GetElems(string path, HtmlDocument html)
         {
             try
             {
                 HtmlWeb web = new HtmlWeb();
-                
-
                 var linkList = html.DocumentNode
                     .Descendants("a")
                     .Select(a => a.GetAttributeValue("href", null))

@@ -31,7 +31,7 @@ namespace Patterns.Memento
 
         }
 
-        public async Task Save()
+        public void Save()
         {
             Console.WriteLine($"Saving originator state in memento. Name: {Originator.StateName}");
             SnapShotModels.Add(Originator.Save());
@@ -68,7 +68,7 @@ namespace Patterns.Memento
             }
         }
 
-        public static async Task<CareTaker> RestoreFromFile()
+        public static CareTaker RestoreFromFile()
         {
             try
             {

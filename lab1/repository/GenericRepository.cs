@@ -27,6 +27,7 @@ namespace Patterns.repository
 
         public IQueryable<TEntity> GetAll()
         {
+            //we use AsNoTracking because we only read entities
             return dbContext.Set<TEntity>().AsNoTracking();
         }
 

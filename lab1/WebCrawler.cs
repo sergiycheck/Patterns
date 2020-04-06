@@ -22,6 +22,7 @@ namespace Patterns
 
         public async Task<HtmlDocument> Download(string path)
         {
+            //this method downloads html from web or disc space
             this.Path = path;
             try
             {
@@ -34,7 +35,7 @@ namespace Patterns
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                //Console.WriteLine(e);
 
             }
 
@@ -48,7 +49,7 @@ namespace Patterns
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                //Console.WriteLine(e);
 
             }
 

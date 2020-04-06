@@ -6,6 +6,6 @@ namespace Patterns
 {
     public interface IElemRetriever
     {
-        Task<IEnumerable<string>> GetElems(string path,HtmlDocument html);
+        IEnumerable<string> GetElems(string path,HtmlDocument html);
     }
 }

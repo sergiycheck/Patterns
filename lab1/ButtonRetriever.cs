@@ -7,7 +7,7 @@ namespace Patterns
 {
     public class ButtonRetriever : IElemRetriever
     {
-        public async Task<IEnumerable<string>> GetElems(string path, HtmlDocument html)
+        public IEnumerable<string> GetElems(string path, HtmlDocument html)
         {
             try
             {
