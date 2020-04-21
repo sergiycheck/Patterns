@@ -58,7 +58,7 @@ namespace Patterns.TemplateMethod
             switch (type)
             {
                 case "binary":
-                    using (FileStream fs = new FileStream(SavedPath + _nameOfTheFile+".dat", FileMode.Create))
+                    using (FileStream fs = new FileStream(SavedPath + _nameOfTheFile+".bin", FileMode.Create))
                     {
                         //Html.Save(fs, Encoding.UTF8);
                         BinaryFormatter bf = new BinaryFormatter();

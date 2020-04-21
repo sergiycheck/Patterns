@@ -72,12 +72,34 @@ namespace Patterns
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                //Console.WriteLine(e);
 
             }
 
             return null;
         }
+        /// <summary>
+        /// get html node with specified attribute
+        /// </summary>
+        /// <param name="attribute"></param>any html attribute (id,class,value ...)
+        /// <param name="value"></param>attribute value
+        /// <param name="doc"></param>html document to find in 
+        /// <returns></returns>
+        public HtmlNode GetNode(string attribute, string value,HtmlDocument doc)
+        {
+            return doc.DocumentNode.SelectSingleNode($"//*[@{attribute}=\"{value}\"]");
+        }
+        /// <summary>
+        /// gets the first tag with matching html tag name
+        /// </summary>
+        /// <param name="name"></param>name of the tag
+        /// <param name="doc"></param>html document to find in 
+        /// <returns></returns>
+        public HtmlNode GetFirstNode(string name, HtmlDocument doc)
+        {
+            return doc.DocumentNode.SelectSingleNode($"//{name}");
+        }
+
 
         public async Task<MyHtmlModel> GetMyHtmlModel(string path)
         {
